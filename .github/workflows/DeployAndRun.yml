@@ -43,10 +43,10 @@ jobs:
       uses: azure/aci-deploy@v1
       with:
         location: eastus
-        name: flask-estructura
-        resource-group: umGroupResource
+        name: ms1-prueba
+        resource-group: recursos-aplicada
         image: ${{ secrets.ACR_NAME }}/${{env.REPO_NAME}}:${{ github.sha }}
-        dns-name-label: flask-estructura-${{ github.run_id }}-${{ github.run_attempt }}
+        dns-name-label: ms1-prueba-${{ github.run_id }}-${{ github.run_attempt }}
         registry-username: ${{ secrets.REGISTRY_USERNAME }}
         registry-password: ${{ secrets.REGISTRY_PASSWORD }}
         ports: 5000

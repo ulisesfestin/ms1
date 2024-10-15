@@ -1,0 +1,7 @@
+.env
+docker-compose.yml
+buildandpush.py
+deploy.py
+deploy.sh
+.vscode/
+ms1.code-workspace

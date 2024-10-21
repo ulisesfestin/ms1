@@ -44,7 +44,7 @@ jobs:
       with:
         location: eastus
         name: ms1-prueba
-        resource-group: recursos-aplicada
+        resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
         image: ${{ secrets.ACR_URL }}/${{env.REPO_NAME}}:${{ github.sha }}
         dns-name-label: ms1-prueba-${{ github.run_id }}-${{ github.run_attempt }}
         registry-username: ${{ secrets.REGISTRY_USERNAME }}

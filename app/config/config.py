@@ -16,6 +16,8 @@ class Config(object):
 class DevelopmentConfig(Config):
     TESTING = True
     DEBUG = True
+    CONNECTION_STRING = os.getenv('CONNECTION_STRING')
+    OTEL_SERVICE_NAME = os.getenv('OTEL_SERVICE_NAME')
         
 class ProductionConfig(Config):
     DEBUG = False

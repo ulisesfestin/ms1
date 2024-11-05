@@ -22,7 +22,7 @@ middleware = FlaskMiddleware()
 
 logger_provider = LoggerProvider()
 set_logger_provider(logger_provider)
-exporter = AzureMonitorLogExporter(connection_string=os.getenv('CONNECTION_STRING'))
+exporter = AzureMonitorLogExporter(connection_string=" ")
 logger_provider.add_log_record_processor(BatchLogRecordProcessor(exporter))
 
 # Configuración del manejador de registros y configuración del nivel de registro

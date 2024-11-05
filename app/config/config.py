@@ -17,7 +17,7 @@ class DevelopmentConfig(Config):
     TESTING = True
     DEBUG = True
     CONNECTION_STRING = os.getenv('CONNECTION_STRING')
-    OTEL_SERVICE_NAME = os.getenv('OTEL_SERVICE_NAME')
+    OTEL_SERVICE_NAME = 'ms1-telemetry'
         
 class ProductionConfig(Config):
     DEBUG = False

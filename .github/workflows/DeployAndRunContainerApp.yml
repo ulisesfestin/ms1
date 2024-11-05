@@ -20,12 +20,7 @@ jobs:
       uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
-    - name: 'Set environment variables from Github Secrets'
-      run: |
-        echo "CONNECTION_STRING=${{ secrets.CONNECTION_STRING }}" >> $GITHUB_ENV
-        echo "OTEL_SERVICE_NAME=${{ secrets.OTEL_SERVICE_NAME }}" >> $GITHUB_ENV
-    
+
     - name: 'Deploy Container App'
       uses: azure/container-apps-deploy-action@v1
       with:
@@ -40,6 +35,9 @@ jobs:
         imageToDeploy: ${{ secrets.ACR_URL }}/${{env.REPO_NAME}}:${{ github.sha }}
         ingress: external
         targetPort: 5000
+        envVars: |
+          CONNECTION_STRING=${{ secrets.CONNECTION_STRING }}
+          OTEL_SERVICE_NAME=${{ secrets.OTEL_SERVICE_NAME }}
         
     
     - name: 'logout'

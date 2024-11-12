@@ -63,6 +63,8 @@ def create_app() -> None:
     middleware.init_app(app)
     ma.init_app(app)
 
+    print(f"DATABASE_URL: {os.getenv('DATABASE_URL')}")
+    print(f"CONNECTION_STRING: {os.getenv('CONNECTION_STRING')}")
     db.init_app(app)
     
     from app.resources import home

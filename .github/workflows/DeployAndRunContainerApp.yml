@@ -62,7 +62,7 @@ jobs:
         imageToDeploy: ${{ secrets.ACR_URL }}/${{env.REPO_NAME}}:${{ github.sha }}
         ingress: external
         targetPort: 5000
-        environmentVariables: "CONNECTION_STRING=secretref:${{secrets.CONNECTION_STRING}} DATABASE_URL=secretref:${{secrets.DATABASE_URL}}"
+        environmentVariables: "DATABASE_URL=${{secrets.DATABASE_URL}} CONNECTION_STRING=${{secrets.CONNECTION_STRING}}"
     
     - name: 'logout'
       run: |

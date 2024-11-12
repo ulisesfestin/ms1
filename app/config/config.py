@@ -18,6 +18,8 @@ class DevelopmentConfig(Config):
     DEBUG = True
     CONNECTION_STRING = os.getenv('CONNECTION_STRING')
     OTEL_SERVICE_NAME = 'ms1-telemetry'
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
         
 class ProductionConfig(Config):
     DEBUG = False

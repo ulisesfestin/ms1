@@ -16,9 +16,11 @@ from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
+from flask_sqlalchemy import SQLAlchemy
 
 ma = Marshmallow()
 middleware = FlaskMiddleware()
+db = SQLAlchemy()
 
 logger_provider = LoggerProvider()
 set_logger_provider(logger_provider)
@@ -60,6 +62,8 @@ def create_app() -> None:
 
     middleware.init_app(app)
     ma.init_app(app)
+
+    db.init_app(app)
     
     from app.resources import home
     app.register_blueprint(home, url_prefix='/api/v1')

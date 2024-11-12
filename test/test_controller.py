@@ -17,7 +17,7 @@ class ControllerTestCase(unittest.TestCase):
     
     def test_index(self):
         client = self.app.test_client(use_cookies=True)
-        response = client.get('http://localhost:5001/api/v1/')
+        response = client.get('http://localhost:5000/api/v1/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'microservicio', response.data)
         self.assertIn(b'status', response.data)

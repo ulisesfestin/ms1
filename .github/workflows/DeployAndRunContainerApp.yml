@@ -43,6 +43,10 @@ jobs:
       uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: 'Pull Docker Image'
+      run: |
+        docker pull mcr.microsoft.com/oryx/cli:builder-debian-bullseye-20230926.1
 
     - name: 'Deploy Container App'
       uses: azure/container-apps-deploy-action@v1
@@ -58,9 +62,7 @@ jobs:
         imageToDeploy: ${{ secrets.ACR_URL }}/${{env.REPO_NAME}}:${{ github.sha }}
         ingress: external
         targetPort: 5000
-        environmentVariables: |
-          CONNECTION_STRING=${{ secrets.CONNECTION_STRING }}
-          DATABASE_URL=${{ secrets.DATABASE_URL }}
+        environmentVariables: "CONNECTION_STRING=${{ secrets.CONNECTION_STRING }} DATABASE_URL=${{ secrets.DATABASE_URL }}"
     
     - name: 'logout'
       run: |
